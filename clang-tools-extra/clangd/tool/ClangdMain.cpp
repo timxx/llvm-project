@@ -695,7 +695,11 @@ enum class ErrorResultCode : int {
   CheckFailed = 3
 };
 
+#if defined(BUILD_CLANGX)
+int clangdMain(int argc, const char **argv) {
+#else
 int main(int argc, char *argv[]) {
+#endif
   using namespace clang;
   using namespace clang::clangd;
 
