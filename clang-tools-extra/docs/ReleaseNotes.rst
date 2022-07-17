@@ -240,6 +240,11 @@ New checks
   Finds potentially incorrect calls to ``memcmp()`` based on properties of the
   arguments.
 
+- New :doc:`bugprone-unique-ptr-array-mismatch
+  <clang-tidy/checks/bugprone-unique-ptr-array-mismatch>` check.
+
+  FIXME: add release notes.
+
 - New :doc:`cppcoreguidelines-virtual-class-destructor
   <clang-tidy/checks/cppcoreguidelines-virtual-class-destructor>` check.
 
