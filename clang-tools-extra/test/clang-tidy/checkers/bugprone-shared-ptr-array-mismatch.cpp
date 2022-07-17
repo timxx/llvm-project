@@ -93,3 +93,9 @@ void f6() {
   CHAR_PTR_INIT(P3, new char[10]);
   // CHECK-MESSAGES: :[[@LINE-1]]:21: warning: shared pointer to non-array is initialized with array [bugprone-shared-ptr-array-mismatch]
 }
+
+void f7() {
+  using byte = char;
+  std::shared_ptr<byte> P1(new byte[10]);
+  // CHECK-MESSAGES: :[[@LINE-1]]:28: warning: shared pointer to non-array is initialized with array [bugprone-shared-ptr-array-mismatch]
+}

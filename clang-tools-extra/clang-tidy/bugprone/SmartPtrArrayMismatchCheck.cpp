@@ -67,10 +67,10 @@ void SmartPtrArrayMismatchCheck::registerMatchers(MatchFinder *Finder) {
   auto FindConstructExpr =
       cxxConstructExpr(
           hasDeclaration(FindConstructor), argumentCountIs(1),
-          hasArgument(
-              0, cxxNewExpr(isArray(), hasType(pointerType(pointee(
-                                           equalsBoundNode(PointerTypeN)))))
-                     .bind(NewExprN)))
+          hasArgument(0, cxxNewExpr(isArray(),
+                                    hasType(pointsTo(qualType(hasCanonicalType(
+                                        equalsBoundNode(PointerTypeN))))))
+                             .bind(NewExprN)))
           .bind(ConstructExprN);
   Finder->addMatcher(FindConstructExpr, this);
 }
